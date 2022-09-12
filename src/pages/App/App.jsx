@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Route, NavLink, Routes, navigate, useNavigate } from 'react-router-dom'
 import AddPuppy from '../AddPuppy/AddPuppy'
+import PuppyList from '../PuppyList/PuppyList'
 import * as puppyService from '../../services/puppies'
 import './App.css'
 
@@ -29,8 +30,8 @@ function App() {
         </nav>
       </header>
       <main>
-      {/* <AddPuppy/> */}
       <Routes>
+        <Route path='/' element={<PuppyList puppies={puppies}/>} />
         <Route  path='/add' element={<AddPuppy handleAddPuppy={handleAddPuppy}/>}/>
       </Routes>
       </main>

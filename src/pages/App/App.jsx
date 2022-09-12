@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Route, NavLink } from 'react-router-dom'
+import { Route, NavLink, Routes } from 'react-router-dom'
+import AddPuppy from '../AddPuppy/AddPuppy'
 import './App.css'
 
 function App() {
@@ -15,7 +16,10 @@ function App() {
         </nav>
       </header>
       <main>
-        
+      {/* <AddPuppy/> */}
+      <Routes>
+        <Route  path='/add' element={<AddPuppy/>}/>
+      </Routes>
       </main>
     </div>
   )

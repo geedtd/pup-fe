@@ -1,13 +1,22 @@
-import React, { useState } from 'react'
-import { Route, NavLink, Routes } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Route, NavLink, Routes, navigate, useNavigate } from 'react-router-dom'
 import AddPuppy from '../AddPuppy/AddPuppy'
+import * as puppyService from '../../services/puppies'
 import './App.css'
 
 function App() {
   const [puppies, setPuppies] = useState([])
+  const navigate = useNavigate()
 
-  const handleAddPuppy = newPuppyData => {
-    setPuppies([...puppies, newPuppyData])
+  useEffect(() => {
+    puppyService.getAll()
+    .then(allPuppies => setPuppies(allPuppies))
+  },[])
+
+  const handleAddPuppy = async newPuppyData => {
+    const newPuppy = await puppyService.create(newPuppyData)
+    setPuppies([...puppies, newPuppy])
+    navigate('/')
   }
 
   return (

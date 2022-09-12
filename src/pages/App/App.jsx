@@ -20,6 +20,11 @@ function App() {
     navigate('/')
   }
 
+  const handleDeletePuppy = id => {
+    puppyService.deleteOne(id)
+    .then(setPuppies(puppies.filter(puppy => puppy._id !== id)))
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -31,7 +36,7 @@ function App() {
       </header>
       <main>
       <Routes>
-        <Route path='/' element={<PuppyList puppies={puppies}/>} />
+        <Route path='/' element={<PuppyList puppies={puppies} handleDeletePuppy={handleDeletePuppy}/>} />
         <Route  path='/add' element={<AddPuppy handleAddPuppy={handleAddPuppy}/>}/>
       </Routes>
       </main>

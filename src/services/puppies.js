@@ -22,8 +22,19 @@ function deleteOne(id) {
     .then(res => res.json())
 }
 
+function update(puppy) {
+    return fetch(`${BASE_URL}/${puppy._id}`, {
+        method: 'PUT',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(puppy)
+    })
+	.then(res => res.json())
+    .catch(err => console.log(err))
+}
+
 export {
     create,
     getAll, 
-    deleteOne
+    deleteOne,
+    update
 }

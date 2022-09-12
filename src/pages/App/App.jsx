@@ -6,6 +6,10 @@ import './App.css'
 function App() {
   const [puppies, setPuppies] = useState([])
 
+  const handleAddPuppy = newPuppyData => {
+    setPuppies([...puppies, newPuppyData])
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,7 +22,7 @@ function App() {
       <main>
       {/* <AddPuppy/> */}
       <Routes>
-        <Route  path='/add' element={<AddPuppy/>}/>
+        <Route  path='/add' element={<AddPuppy handleAddPuppy={handleAddPuppy}/>}/>
       </Routes>
       </main>
     </div>
